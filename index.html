@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30FRA e PhD · Dress code</title>
+<meta name="description" content="Dress code: personaggi del cinema">
+<meta property="og:title" content="30FRA e PhD · Dress code">
+<meta property="og:description" content="Cinema: vieni vestito da un personaggio di un film">
+<meta property="og:image" content="img/frances-ca.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0b0c0c;color:#f3f1ec;font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.6}
+  a{color:inherit}
+
+  .scene{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:80px 16px;background-size:cover;background-position:center;isolation:isolate}
+  .scene::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.85) 30%,rgba(0,0,0,.85) 70%,rgba(0,0,0,.6))}
+  .inner{max-width:640px;width:100%;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+
+  .spaced{text-transform:uppercase;letter-spacing:.45em;font-size:.8rem;font-weight:400;margin:0 0 18px}
+  .neon{font-family:Monoton,cursive;font-weight:400;line-height:1;margin:0;color:#fff;
+    text-shadow:3px 0 #ff4fd8,-3px 0 #33e6ff,0 0 24px rgba(0,0,0,.6)}
+  h1.neon{font-size:clamp(3.2rem,15vw,8rem)}
+  h2.neon{font-size:clamp(2rem,9vw,3.6rem);margin-bottom:28px}
+  .sub{font-size:clamp(1.1rem,4vw,1.5rem);letter-spacing:.2em;text-transform:uppercase;margin:18px 0 0;font-weight:400}
+  p{font-size:1.1rem}
+  .down{display:inline-block;margin-top:36px;text-decoration:none;letter-spacing:.35em;text-transform:uppercase;font-size:.8rem}
+  .down:hover{color:#ffd94a}
+
+  /* hero: mosaico di locandine */
+  .mosaic{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+  .mosaic div{background-size:cover;background-position:center}
+  @media (min-width:800px){.mosaic{grid-template-columns:repeat(5,1fr)}}
+
+  .list{list-style:none;padding:0;margin:0}
+  .list li{margin:10px 0;font-size:1.1rem}
+  .list i{opacity:.75}
+  .tier{margin-top:40px}
+  .tier h3{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;margin:0 0 12px;color:#ffd94a}
+
+  .films{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 40px;text-align:center;margin-top:24px}
+  .genre{margin-top:28px}
+  .genre h3{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;margin:0 0 10px;color:#ffd94a}
+  .genre .list li{margin:6px 0}
+  .genre a{text-decoration:none}
+  .genre a:hover{color:#ffd94a}
+  .ban{margin-top:56px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#ff4fd8}
+  #ispirazione .inner{max-width:900px}
+  #f-armadio{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+  #q{flex:1 1 260px;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.6);color:#fff;
+     font:inherit;font-size:1.1rem;padding:10px 2px;text-align:center;outline:none}
+  #q:focus{border-bottom-color:#ffd94a}
+  #q::placeholder{color:rgba(255,255,255,.45)}
+  #f-armadio button{background:none;border:0;color:#ffd94a;font:inherit;font-weight:700;text-transform:uppercase;
+     letter-spacing:.25em;font-size:.85rem;cursor:pointer;padding:10px 4px}
+  .esempi{font-size:.9rem;opacity:.75;margin-top:18px}
+  .esempi a{text-decoration:none;border-bottom:1px dotted currentColor}
+  #esito{margin-top:36px}
+  .match{margin:26px 0}
+  .match .nome{font-size:1.5rem;font-weight:700;margin:0}
+  .match .film{letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;color:#ffd94a;margin:4px 0 6px}
+  .match .film a{text-decoration:none}
+  .match .h{margin:0;opacity:.85;font-size:1rem}
+  .vuoto{opacity:.85}
+  footer{text-align:center;padding:40px 16px;letter-spacing:.45em;text-transform:uppercase;font-size:.75rem;opacity:.7}
+</style>
+</head>
+<body>
+
+<!-- 1. Apertura -->
+<header class="scene">
+  <div class="mosaic" aria-hidden="true">
+    <div style="background-image:url(img/frances-ca.jpg)"></div>
+    <div style="background-image:url(img/feline.jpg)"></div>
+    <div style="background-image:url(img/dr-franca-stein.jpg)"></div>
+    <div style="background-image:url(img/fart-wars.jpg)"></div>
+    <div style="background-image:url(img/premio-costume.jpg)"></div>
+    <div style="background-image:url(img/feline.jpg)"></div>
+  </div>
+  <div class="inner">
+    <p class="spaced">30FRA e PhD · Dress code</p>
+    <h1 class="neon">Cinema</h1>
+    <p class="sub">Personaggi del cinema</p>
+    <p style="margin-top:32px">Vieni vestito da un personaggio di un film.<br>
+      Dai, non è troppo difficile. Ma se proprio vuoi ispirazione, <a href="#ispirazione">c'è la sezione apposta</a>.</p>
+    <a class="down" href="#armadio">Cosa hai nell'armadio? ↓</a>
+  </div>
+</header>
+
+<!-- 2. Armadio -->
+<section class="scene" id="armadio" style="background-image:url(img/frances-ca.jpg)">
+  <div class="inner">
+    <p class="spaced">Il gioco</p>
+    <h2 class="neon">Cosa hai nell'armadio?</h2>
+    <p>Scrivi cosa hai già e ti dico chi potresti essere.</p>
+    <form id="f-armadio" autocomplete="off">
+      <input id="q" type="text" placeholder="es. maglietta verde e pantaloni marroni" aria-label="Cosa hai nell'armadio">
+      <button type="submit">Chi sono? →</button>
+    </form>
+    <p class="esempi">Prova:
+      <a href="#" data-q="accappatoio e occhiali da sole">accappatoio e occhiali da sole</a> ·
+      <a href="#" data-q="impermeabile giallo">impermeabile giallo</a> ·
+      <a href="#" data-q="vestito nero e guanti lunghi">vestito nero e guanti lunghi</a>
+    </p>
+    <div id="esito" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- 3. Ispirazione -->
+<section class="scene" id="ispirazione" style="background-image:url(img/fart-wars.jpg)">
+  <div class="inner">
+    <p class="spaced">Ispirazione</p>
+    <h2 class="neon">I miei film preferiti</h2>
+    <p style="margin:-8px 0 8px;opacity:.8">Tocca un titolo per vedere i personaggi.</p>
+    <div class="films">
+      <div class="genre"><h3>Horror</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=The+Shining+1980" target="_blank" rel="noopener">Shining</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Hereditary+2018" target="_blank" rel="noopener">Hereditary</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Midsommar+2019" target="_blank" rel="noopener">Midsommar</a></li>
+        <li><a href="https://www.imdb.com/find/?q=It+Follows+2014" target="_blank" rel="noopener">It Follows</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Thing+1982" target="_blank" rel="noopener">La cosa</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Suspiria+1977" target="_blank" rel="noopener">Suspiria</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Carrie+1976" target="_blank" rel="noopener">Carrie</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Witch+2015" target="_blank" rel="noopener">The Witch</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Lighthouse+2019" target="_blank" rel="noopener">The Lighthouse</a></li>
+      </ul></div>
+      <div class="genre"><h3>Fantascienza</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=Alien+1979" target="_blank" rel="noopener">Alien</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Blade+Runner+1982" target="_blank" rel="noopener">Blade Runner</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Gattaca+1997" target="_blank" rel="noopener">Gattaca</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Brazil+1985" target="_blank" rel="noopener">Brazil</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Mad+Max+Fury+Road" target="_blank" rel="noopener">Mad Max: Fury Road</a></li>
+      </ul></div>
+      <div class="genre"><h3>Musical</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=Cabaret+1972" target="_blank" rel="noopener">Cabaret</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Jesus+Christ+Superstar+1973" target="_blank" rel="noopener">Jesus Christ Superstar</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Rocky+Horror+Picture+Show" target="_blank" rel="noopener">The Rocky Horror Picture Show</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Sound+of+Music+1965" target="_blank" rel="noopener">Tutti insieme appassionatamente</a></li>
+        <li><a href="https://www.imdb.com/find/?q=West+Side+Story+1961" target="_blank" rel="noopener">West Side Story</a></li>
+        <li><a href="https://www.imdb.com/find/?q=La+La+Land" target="_blank" rel="noopener">La La Land</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Priscilla+Queen+of+the+Desert" target="_blank" rel="noopener">Priscilla, la regina del deserto</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Blues+Brothers+1980" target="_blank" rel="noopener">The Blues Brothers</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Hair+1979" target="_blank" rel="noopener">Hair</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Chicago+2002" target="_blank" rel="noopener">Chicago</a></li>
+      </ul></div>
+      <div class="genre"><h3>Commedie</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=The+Big+Lebowski" target="_blank" rel="noopener">Il grande Lebowski</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Devil+Wears+Prada" target="_blank" rel="noopener">Il diavolo veste Prada</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Hot+Fuzz" target="_blank" rel="noopener">Hot Fuzz</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Shaun+of+the+Dead" target="_blank" rel="noopener">Shaun of the Dead</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Shrek+2" target="_blank" rel="noopener">Shrek 2</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Groundhog+Day+1993" target="_blank" rel="noopener">Ricomincio da capo</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Life+of+Brian" target="_blank" rel="noopener">Brian di Nazareth</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Monty+Python+and+the+Holy+Grail" target="_blank" rel="noopener">Monty Python e il Sacro Graal</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Annie+Hall" target="_blank" rel="noopener">Io e Annie</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Young+Frankenstein" target="_blank" rel="noopener">Frankenstein Junior</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Some+Like+It+Hot+1959" target="_blank" rel="noopener">A qualcuno piace caldo</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Fargo+1996" target="_blank" rel="noopener">Fargo</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Airplane%21+1980" target="_blank" rel="noopener">L'aereo più pazzo del mondo</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Naked+Gun+1988" target="_blank" rel="noopener">Una pallottola spuntata</a></li>
+        <li><a href="https://www.imdb.com/find/?q=A+Fish+Called+Wanda" target="_blank" rel="noopener">Un pesce di nome Wanda</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Wayne%27s+World+1992" target="_blank" rel="noopener">Wayne's World</a></li>
+      </ul></div>
+      <div class="genre"><h3>Classici</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=Rear+Window" target="_blank" rel="noopener">La finestra sul cortile</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Psycho+1960" target="_blank" rel="noopener">Psyco</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Sunset+Boulevard+1950" target="_blank" rel="noopener">Viale del tramonto</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Wizard+of+Oz+1939" target="_blank" rel="noopener">Il mago di Oz</a></li>
+        <li><a href="https://www.imdb.com/find/?q=The+Graduate+1967" target="_blank" rel="noopener">Il laureato</a></li>
+        <li><a href="https://www.imdb.com/find/?q=One+Flew+Over+the+Cuckoo%27s+Nest" target="_blank" rel="noopener">Qualcuno volò sul nido del cuculo</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Pride+%26+Prejudice+2005" target="_blank" rel="noopener">Orgoglio e pregiudizio</a></li>
+      </ul></div>
+      <div class="genre"><h3>Europa</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=Les+quatre+cents+coups" target="_blank" rel="noopener">I 400 colpi</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Last+Tango+in+Paris" target="_blank" rel="noopener">Ultimo tango a Parigi</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Il+sorpasso+1962" target="_blank" rel="noopener">Il sorpasso</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Una+giornata+particolare+1977" target="_blank" rel="noopener">Una giornata particolare</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Divorzio+all%27italiana" target="_blank" rel="noopener">Divorzio all'italiana</a></li>
+      </ul></div>
+      <div class="genre"><h3>Crimine e dintorni</h3><ul class="list">
+        <li><a href="https://www.imdb.com/find/?q=Taxi+Driver" target="_blank" rel="noopener">Taxi Driver</a></li>
+        <li><a href="https://www.imdb.com/find/?q=A+Clockwork+Orange" target="_blank" rel="noopener">Arancia meccanica</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Eyes+Wide+Shut" target="_blank" rel="noopener">Eyes Wide Shut</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Chinatown+1974" target="_blank" rel="noopener">Chinatown</a></li>
+        <li><a href="https://www.imdb.com/find/?q=L.A.+Confidential" target="_blank" rel="noopener">L.A. Confidential</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Jackie+Brown" target="_blank" rel="noopener">Jackie Brown</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Kill+Bill+Vol.+1" target="_blank" rel="noopener">Kill Bill</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Inglourious+Basterds" target="_blank" rel="noopener">Bastardi senza gloria</a></li>
+      </ul></div>
+    </div>
+    <p class="ban">Moulin Rouge NO.<br>Qualsiasi cosa provenga da Baz Luhrmann sarà bandita.</p>
+  </div>
+</section>
+
+<!-- 4. Come vestirsi -->
+<section class="scene" id="regole" style="background-image:url(img/feline.jpg)">
+  <div class="inner">
+    <p class="spaced">Le regole</p>
+    <h2 class="neon">Chi sei?</h2>
+    <p>Basta che si capisca.<br>Se non si capisce, preparati a spiegarlo a tutti.</p>
+
+    <div class="tier">
+      <h3>Un oggetto iconico</h3>
+      <ul class="list">
+        <li>Cappello e frusta <i>— Indiana Jones</i></li>
+        <li>Occhiali tondi e cicatrice <i>— Harry Potter</i></li>
+        <li>Bombetta e baffetti <i>— Charlot</i></li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <h3>Tutto in grande</h3>
+      <ul class="list">
+        <li>Tuta gialla e katana <i>— Kill Bill</i></li>
+        <li>Abito nero e guanti lunghi <i>— Gilda</i></li>
+        <li>Quello che la tua fantasia regge</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:40px;opacity:.85">Quando confermi, dimmi il tuo personaggio: evitiamo cinque Mercoledì Addams.<br>
+      Coppie e gruppi benvenuti.</p>
+  </div>
+</section>
+
+<!-- 5. Premio -->
+<section class="scene" id="premio" style="background-image:url(img/premio-costume.jpg)">
+  <div class="inner">
+    <p class="spaced">And the Oscar goes to…</p>
+    <h2 class="neon">Miglior costume</h2>
+    <p>A fine serata premieremo il costume migliore.<br>Con statuetta vera. Più o meno.</p>
+  </div>
+</section>
+
+<!-- 6. Chiusura -->
+<section class="scene" style="background-image:url(img/dr-franca-stein.jpg);min-height:70vh">
+  <div class="inner">
+    <h2 class="neon" style="margin:0">Ci vediamo<br>al cinema</h2>
+  </div>
+</section>
+
+<footer>A party by piovesun</footer>
+<script src="personaggi.js"></script>
+<script>window.PERSONAGGI = PERSONAGGI;</script>
+<script src="armadio.js"></script>
+<script>
+  const esito=document.getElementById('esito'), q=document.getElementById('q');
+  const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function mostra(testo){
+    const r=cercaPersonaggio(testo);
+    if(!r.capito){esito.innerHTML='<p class="vuoto">Non ho capito. Prova con capi e colori, tipo «camicia bianca e cravatta nera».</p>';return;}
+    if(!r.risultati.length){esito.innerHTML='<p class="vuoto">Nessun personaggio in archivio. Sei libero di inventare (ma niente Baz Luhrmann).</p>';return;}
+    esito.innerHTML=r.risultati.map((p,i)=>`<div class="match"><p class="spaced" style="margin:0 0 6px">${i?'Oppure':'Potresti essere'}</p>
+      <p class="nome">${esc(p.n)}</p>
+      <p class="film"><a href="https://www.imdb.com/find/?q=${encodeURIComponent(p.f)}" target="_blank" rel="noopener">${esc(p.f)}</a></p>
+      <p class="h">${esc(p.h)}</p></div>`).join('');
+  }
+  document.getElementById('f-armadio').addEventListener('submit',e=>{e.preventDefault();mostra(q.value)});
+  document.querySelectorAll('.esempi a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();q.value=a.dataset.q;mostra(a.dataset.q)}));
+</script>
+</body>
+</html>
