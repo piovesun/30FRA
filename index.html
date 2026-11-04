@@ -68,6 +68,25 @@
   .match .film a{text-decoration:none}
   .match .h{margin:0;opacity:.85;font-size:1rem}
   .vuoto{opacity:.85}
+  .cartellone{padding:80px 0 64px}
+  .rullo{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px calc(50vw - min(39vw,210px));
+     scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .rullo::-webkit-scrollbar{display:none}
+  .rullo figure{margin:0;flex:0 0 min(78vw,420px);scroll-snap-align:center}
+  .rullo img{width:100%;display:block;cursor:zoom-in;box-shadow:0 18px 50px rgba(0,0,0,.7)}
+  .rullo figcaption{text-align:center;margin-top:14px;letter-spacing:.35em;text-transform:uppercase;font-size:.75rem;opacity:.7}
+  .scorri{text-align:center;letter-spacing:.35em;text-transform:uppercase;font-size:.75rem;opacity:.5;margin-top:18px}
+  @media (min-width:900px){
+    .rullo{flex-wrap:wrap;justify-content:center;overflow:visible;padding:8px 16px;gap:28px}
+    .rullo figure{flex:0 0 280px}
+    .scorri{display:none}
+  }
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-height:94vh;max-width:100%;width:auto}
+  .qa{margin:34px 0}
+  .qa .d{font-weight:700;font-size:1.15rem;margin:0 0 6px}
+  .qa .r{margin:0;opacity:.9}
   footer{text-align:center;padding:40px 16px;letter-spacing:.45em;text-transform:uppercase;font-size:.75rem;opacity:.7}
 </style>
 </head>
@@ -92,6 +111,20 @@
     <a class="down" href="#armadio">Cosa hai nell'armadio? ↓</a>
   </div>
 </header>
+
+<!-- Locandine -->
+<section id="locandine" class="cartellone">
+  <p class="spaced" style="text-align:center">In programmazione</p>
+  <h2 class="neon" style="text-align:center">Locandine</h2>
+  <div class="rullo">
+      <figure><img src="img/frances-ca.jpg" alt="Locandina: Frances Ca" loading="lazy"><figcaption>Frances Ca</figcaption></figure>
+      <figure><img src="img/feline.jpg" alt="Locandina: Feline" loading="lazy"><figcaption>Feline</figcaption></figure>
+      <figure><img src="img/dr-franca-stein.jpg" alt="Locandina: Dr Franca Stein" loading="lazy"><figcaption>Dr Franca Stein</figcaption></figure>
+      <figure><img src="img/fart-wars.jpg" alt="Locandina: Fart Wars" loading="lazy"><figcaption>Fart Wars</figcaption></figure>
+      <figure><img src="img/premio-costume.jpg" alt="Locandina: Miglior costume" loading="lazy"><figcaption>Miglior costume</figcaption></figure>
+  </div>
+  <p class="scorri">scorri →</p>
+</section>
 
 <!-- 2. Armadio -->
 <section class="scene" id="armadio" style="background-image:url(img/frances-ca.jpg)">
@@ -198,33 +231,16 @@
   </div>
 </section>
 
-<!-- 4. Come vestirsi -->
+<!-- 4. Domande -->
 <section class="scene" id="regole" style="background-image:url(img/feline.jpg)">
   <div class="inner">
-    <p class="spaced">Le regole</p>
+    <p class="spaced">Domande frequenti</p>
     <h2 class="neon">Chi sei?</h2>
-    <p>Basta che si capisca.<br>Se non si capisce, preparati a spiegarlo a tutti.</p>
-
-    <div class="tier">
-      <h3>Un oggetto iconico</h3>
-      <ul class="list">
-        <li>Cappello e frusta <i>— Indiana Jones</i></li>
-        <li>Occhiali tondi e cicatrice <i>— Harry Potter</i></li>
-        <li>Bombetta e baffetti <i>— Charlot</i></li>
-      </ul>
-    </div>
-
-    <div class="tier">
-      <h3>Tutto in grande</h3>
-      <ul class="list">
-        <li>Tuta gialla e katana <i>— Kill Bill</i></li>
-        <li>Abito nero e guanti lunghi <i>— Gilda</i></li>
-        <li>Quello che la tua fantasia regge</li>
-      </ul>
-    </div>
-
-    <p style="margin-top:40px;opacity:.85">Quando confermi, dimmi il tuo personaggio: evitiamo cinque Mercoledì Addams.<br>
-      Coppie e gruppi benvenuti.</p>
+    <div class="qa"><p class="d">Devo travestirmi per forza?</p><p class="r">Nessuno deve fare nulla per forza, ma è divertente, no? Con una felpa puoi fare Eminem in <i>8 Mile</i>.</p></div>
+    <div class="qa"><p class="d">Quanto sforzo ci devo mettere?</p><p class="r">Proporzionale a quanto mi vuoi bene :)</p></div>
+    <div class="qa"><p class="d">C'è un premio per il miglior costume?</p><p class="r">OVVIO, non mi conosci ancora?</p></div>
+    <div class="qa"><p class="d">Cosa succede se non ho tempo/spazio/voglia/soldi/incentivi per travestirmi?</p><p class="r">Nulla, mi renderai solo un po' triste.</p></div>
+    <div class="qa"><p class="d">Ma bastano una maglietta e un paio di pantaloni colorati?</p><p class="r">Massì, dai.</p></div>
   </div>
 </section>
 
@@ -241,6 +257,7 @@
 <section class="scene" style="background-image:url(img/dr-franca-stein.jpg);min-height:70vh">
   <div class="inner">
     <h2 class="neon" style="margin:0">Ci vediamo<br>al cinema</h2>
+    <p class="sub" style="margin-top:28px">Ti aspetto travestitə</p>
   </div>
 </section>
 
@@ -262,6 +279,13 @@
   }
   document.getElementById('f-armadio').addEventListener('submit',e=>{e.preventDefault();mostra(q.value)});
   document.querySelectorAll('.esempi a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();q.value=a.dataset.q;mostra(a.dataset.q)}));
+</script>
+<div class="lb" id="lb"><img alt=""></div>
+<script>
+  const lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+  document.querySelectorAll('.rullo img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('open')}));
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
 </script>
 </body>
 </html>
