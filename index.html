@@ -7,7 +7,7 @@
 <meta name="description" content="Dress code: personaggi del cinema">
 <meta property="og:title" content="30FRA e PhD · Dress code">
 <meta property="og:description" content="Cinema: vieni vestito da un personaggio di un film">
-<meta property="og:image" content="img/frances-ca.jpg">
+<meta property="og:image" content="img/indie-movie.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
   html{scroll-behavior:smooth}
   body{margin:0;background:#0b0c0c;color:#f3f1ec;font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.6}
   a{color:inherit}
+  section,header{scroll-margin-top:0}
 
   .scene{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
     padding:80px 16px;background-size:cover;background-position:center;isolation:isolate}
@@ -24,51 +25,19 @@
   .inner{max-width:640px;width:100%;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.8)}
 
   .spaced{text-transform:uppercase;letter-spacing:.45em;font-size:.8rem;font-weight:400;margin:0 0 18px}
-  .neon{font-family:Monoton,cursive;font-weight:400;line-height:1;margin:0;color:#fff;
+  .neon{font-family:Monoton,cursive;font-weight:400;line-height:1.05;margin:0;color:#fff;
     text-shadow:3px 0 #ff4fd8,-3px 0 #33e6ff,0 0 24px rgba(0,0,0,.6)}
   h1.neon{font-size:clamp(3.2rem,15vw,8rem)}
   h2.neon{font-size:clamp(2rem,9vw,3.6rem);margin-bottom:28px}
   .sub{font-size:clamp(1.1rem,4vw,1.5rem);letter-spacing:.2em;text-transform:uppercase;margin:18px 0 0;font-weight:400}
   p{font-size:1.1rem}
-  .down{display:inline-block;margin-top:36px;text-decoration:none;letter-spacing:.35em;text-transform:uppercase;font-size:.8rem}
+  .down{display:inline-block;margin-top:28px;text-decoration:none;letter-spacing:.35em;text-transform:uppercase;font-size:.8rem}
   .down:hover{color:#ffd94a}
+  .giallo{color:#ffd94a}
 
-  /* hero: mosaico di locandine */
-  .mosaic{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
-  .mosaic div{background-size:cover;background-position:center}
-  @media (min-width:800px){.mosaic{grid-template-columns:repeat(5,1fr)}}
-
-  .list{list-style:none;padding:0;margin:0}
-  .list li{margin:10px 0;font-size:1.1rem}
-  .list i{opacity:.75}
-  .tier{margin-top:40px}
-  .tier h3{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;margin:0 0 12px;color:#ffd94a}
-
-  .films{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 40px;text-align:center;margin-top:24px}
-  .genre{margin-top:28px}
-  .genre h3{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;margin:0 0 10px;color:#ffd94a}
-  .genre .list li{margin:6px 0}
-  .genre a{text-decoration:none}
-  .genre a:hover{color:#ffd94a}
-  .ban{margin-top:56px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#ff4fd8}
-  #ispirazione .inner{max-width:900px}
-  #f-armadio{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
-  #q{flex:1 1 260px;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.6);color:#fff;
-     font:inherit;font-size:1.1rem;padding:10px 2px;text-align:center;outline:none}
-  #q:focus{border-bottom-color:#ffd94a}
-  #q::placeholder{color:rgba(255,255,255,.45)}
-  #f-armadio button{background:none;border:0;color:#ffd94a;font:inherit;font-weight:700;text-transform:uppercase;
-     letter-spacing:.25em;font-size:.85rem;cursor:pointer;padding:10px 4px}
-  .esempi{font-size:.9rem;opacity:.75;margin-top:18px}
-  .esempi a{text-decoration:none;border-bottom:1px dotted currentColor}
-  #esito{margin-top:36px}
-  .match{margin:26px 0}
-  .match .nome{font-size:1.5rem;font-weight:700;margin:0}
-  .match .film{letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;color:#ffd94a;margin:4px 0 6px}
-  .match .film a{text-decoration:none}
-  .match .h{margin:0;opacity:.85;font-size:1rem}
-  .vuoto{opacity:.85}
-  .cartellone{padding:80px 0 64px}
+  /* locandine */
+  .cartellone{padding:56px 0 48px}
+  .cartellone .testa{text-align:center;padding:0 16px}
   .rullo{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px calc(50vw - min(39vw,210px));
      scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .rullo::-webkit-scrollbar{display:none}
@@ -78,78 +47,152 @@
   .scorri{text-align:center;letter-spacing:.35em;text-transform:uppercase;font-size:.75rem;opacity:.5;margin-top:18px}
   @media (min-width:900px){
     .rullo{flex-wrap:wrap;justify-content:center;overflow:visible;padding:8px 16px;gap:28px}
-    .rullo figure{flex:0 0 280px}
+    .rullo figure{flex:0 0 260px}
     .scorri{display:none}
   }
-  .lb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;cursor:zoom-out}
-  .lb.open{display:flex}
-  .lb img{max-height:94vh;max-width:100%;width:auto}
+
+  /* mosaico tema */
+  .mosaic{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+  .mosaic div{background-size:cover;background-position:center}
+  @media (min-width:800px){.mosaic{grid-template-columns:repeat(5,1fr)}}
+
+  /* armadio */
+  #f-armadio{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+  #q{flex:1 1 260px;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.6);color:#fff;
+     font:inherit;font-size:1.1rem;padding:10px 2px;text-align:center;outline:none}
+  #q:focus{border-bottom-color:#ffd94a}
+  #q::placeholder{color:rgba(255,255,255,.45)}
+  .linkbtn{background:none;border:0;color:#ffd94a;font:inherit;font-weight:700;text-transform:uppercase;
+     letter-spacing:.25em;font-size:.85rem;cursor:pointer;padding:10px 4px}
+  .linkbtn:hover{color:#fff}
+  .esempi{font-size:.9rem;opacity:.75;margin-top:18px}
+  .esempi a{text-decoration:none;border-bottom:1px dotted currentColor}
+  #esito{margin-top:30px}
+  .match{margin:26px 0}
+  .match .nome{font-size:1.5rem;font-weight:700;margin:0}
+  .match .film{letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;color:#ffd94a;margin:4px 0 6px}
+  .match .film a{text-decoration:none}
+  .match .h{margin:0;opacity:.85;font-size:1rem}
+
+  /* film */
+  .list{list-style:none;padding:0;margin:0}
+  .list li{margin:10px 0;font-size:1.1rem}
+  #ispirazione .inner{max-width:900px}
+  .films{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 40px;text-align:center;margin-top:24px}
+  .genre{margin-top:28px}
+  .genre h3{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;margin:0 0 10px;color:#ffd94a}
+  .genre .list li{margin:6px 0}
+  .genre a{text-decoration:none}
+  .genre a:hover{color:#ffd94a}
+  .ban{margin-top:56px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#ff4fd8}
+
+  /* quiz */
+  #quiz-box{margin-top:12px;min-height:280px}
+  .q-num{letter-spacing:.35em;text-transform:uppercase;font-size:.75rem;opacity:.6;margin:0 0 10px}
+  .q-testo{font-size:1.3rem;font-weight:700;margin:0 0 22px}
+  .opz{display:block;width:100%;background:none;border:0;color:#f3f1ec;font:inherit;font-size:1.1rem;padding:12px 4px;cursor:pointer}
+  .opz:hover{color:#ffd94a}
+  .opz.giusta{color:#7dff9b;font-weight:700}
+  .opz.sbagliata{color:#ff6b6b;text-decoration:line-through}
+  .festa{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:6px;margin-top:10px}
+  .fra-pixel{height:min(230px,40vh);image-rendering:pixelated;animation:salta 1.2s ease-in-out infinite alternate}
+  .filante{width:34px;height:110px;animation:ondeggia 1.6s ease-in-out infinite alternate}
+  .filante.f1{align-self:flex-start}
+  .filante.f3{position:absolute;right:calc(50% - 120px);top:-10px;width:26px;height:80px;animation-delay:.4s}
+  @keyframes salta{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+  @keyframes ondeggia{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion:reduce){.fra-pixel,.filante{animation:none}}
+
+  /* faq */
   .qa{margin:34px 0}
   .qa .d{font-weight:700;font-size:1.15rem;margin:0 0 6px}
   .qa .r{margin:0;opacity:.9}
+
+  /* premio */
+  .premio{padding:80px 16px;text-align:center}
+  .premio img{width:min(420px,86vw);display:block;margin:0 auto 32px;box-shadow:0 18px 50px rgba(0,0,0,.7)}
+
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-height:94vh;max-width:100%;width:auto}
+
   footer{text-align:center;padding:40px 16px;letter-spacing:.45em;text-transform:uppercase;font-size:.75rem;opacity:.7}
 </style>
 </head>
 <body>
 
-<!-- 1. Apertura -->
-<header class="scene">
-  <div class="mosaic" aria-hidden="true">
-    <div style="background-image:url(img/frances-ca.jpg)"></div>
-    <div style="background-image:url(img/feline.jpg)"></div>
-    <div style="background-image:url(img/dr-franca-stein.jpg)"></div>
-    <div style="background-image:url(img/fart-wars.jpg)"></div>
-    <div style="background-image:url(img/premio-costume.jpg)"></div>
-    <div style="background-image:url(img/feline.jpg)"></div>
-  </div>
-  <div class="inner">
-    <p class="spaced">30FRA e PhD · Dress code</p>
-    <h1 class="neon">Cinema</h1>
-    <p class="sub">Personaggi del cinema</p>
-    <p style="margin-top:32px">Vieni vestito da un personaggio di un film.<br>
-      Dai, non è troppo difficile. Ma se proprio vuoi ispirazione, <a href="#ispirazione">c'è la sezione apposta</a>.</p>
-    <a class="down" href="#armadio">Cosa hai nell'armadio? ↓</a>
-  </div>
-</header>
-
-<!-- Locandine -->
+<!-- 1. Locandine -->
 <section id="locandine" class="cartellone">
-  <p class="spaced" style="text-align:center">In programmazione</p>
-  <h2 class="neon" style="text-align:center">Locandine</h2>
-  <div class="rullo">
-      <figure><img src="img/frances-ca.jpg" alt="Locandina: Frances Ca" loading="lazy"><figcaption>Frances Ca</figcaption></figure>
-      <figure><img src="img/feline.jpg" alt="Locandina: Feline" loading="lazy"><figcaption>Feline</figcaption></figure>
-      <figure><img src="img/dr-franca-stein.jpg" alt="Locandina: Dr Franca Stein" loading="lazy"><figcaption>Dr Franca Stein</figcaption></figure>
-      <figure><img src="img/fart-wars.jpg" alt="Locandina: Fart Wars" loading="lazy"><figcaption>Fart Wars</figcaption></figure>
-      <figure><img src="img/premio-costume.jpg" alt="Locandina: Miglior costume" loading="lazy"><figcaption>Miglior costume</figcaption></figure>
+  <div class="testa">
+    <p class="spaced" style="margin-bottom:28px">30FRA e PhD · In programmazione</p>
+  </div>
+  <div class="rullo" id="rullo">
+    <figure><img src="img/fart-wars.jpg" alt="Locandina: Fart Wars" loading="lazy"></figure>
+    <figure><img src="img/vibecoder.jpg" alt="Locandina: The Vibecoder" loading="lazy"></figure>
+    <figure><img src="img/lmdfebn.jpg" alt="Locandina: LMDFÈBN" loading="lazy"></figure>
+    <figure><img src="img/teletubbips.jpg" alt="Locandina: Teletubbips" loading="lazy"></figure>
+    <figure><img src="img/via-col-veneto.jpg" alt="Locandina: Via col Veneto" loading="lazy"></figure>
+    <figure><img src="img/leons-eleven.jpg" alt="Locandina: Leon's Eleven" loading="lazy"></figure>
+    <figure><img src="img/southern-parella.jpg" alt="Locandina: Southern Parella Story" loading="lazy"></figure>
+    <figure><img src="img/indie-movie.jpg" alt="Locandina: Indie Movie" loading="lazy"></figure>
+    <figure><img src="img/feline.jpg" alt="Locandina: Feline" loading="lazy"></figure>
+    <figure><img src="img/dr-franca-stein.jpg" alt="Locandina: Dr Franca Stein" loading="lazy"></figure>
   </div>
   <p class="scorri">scorri →</p>
 </section>
 
-<!-- 2. Armadio -->
-<section class="scene" id="armadio" style="background-image:url(img/frances-ca.jpg)">
+<!-- 2. Tema -->
+<section class="scene" id="tema">
+  <div class="mosaic" aria-hidden="true">
+    <div style="background-image:url(img/fart-wars.jpg)"></div>
+    <div style="background-image:url(img/vibecoder.jpg)"></div>
+    <div style="background-image:url(img/lmdfebn.jpg)"></div>
+    <div style="background-image:url(img/teletubbips.jpg)"></div>
+    <div style="background-image:url(img/via-col-veneto.jpg)"></div>
+    <div style="background-image:url(img/leons-eleven.jpg)"></div>
+    <div style="background-image:url(img/southern-parella.jpg)"></div>
+    <div style="background-image:url(img/indie-movie.jpg)"></div>
+    <div style="background-image:url(img/feline.jpg)"></div>
+    <div style="background-image:url(img/dr-franca-stein.jpg)"></div>
+  </div>
+  <div class="inner">
+    <p class="spaced">Dress code</p>
+    <h2 class="neon" style="font-size:clamp(3rem,14vw,7rem)">Cinema</h2>
+    <p class="sub">Personaggi del cinema</p>
+    <p style="margin-top:32px">Vieni vestito da un personaggio di un film.<br>
+      Dai, non è troppo difficile. Ma se proprio vuoi ispirazione, <a href="#armadio">c'è la sezione apposta</a>.</p>
+    <a class="down" href="#armadio">Cosa hai nell'armadio? ↓</a>
+  </div>
+</section>
+
+<!-- 3. Armadio -->
+<section class="scene" id="armadio" style="background-image:url(img/indie-movie.jpg)">
   <div class="inner">
     <p class="spaced">Il gioco</p>
     <h2 class="neon">Cosa hai nell'armadio?</h2>
-    <p>Scrivi cosa hai già e ti dico chi potresti essere.</p>
+    <p>Scrivi cosa hai già (capi, colori, oggetti) e ti dico chi potresti essere.<br>
+      <span style="opacity:.75">In archivio ci sono <b id="n-pers">250</b> personaggi.</span></p>
     <form id="f-armadio" autocomplete="off">
       <input id="q" type="text" placeholder="es. maglietta verde e pantaloni marroni" aria-label="Cosa hai nell'armadio">
-      <button type="submit">Chi sono? →</button>
+      <button type="submit" class="linkbtn">Chi sono? →</button>
     </form>
     <p class="esempi">Prova:
       <a href="#" data-q="accappatoio e occhiali da sole">accappatoio e occhiali da sole</a> ·
+      <a href="#" data-q="vestito rosso e guanti lunghi">vestito rosso e guanti lunghi</a> ·
+      <a href="#" data-q="maglione a righe rosse e verdi">maglione a righe rosse e verdi</a> ·
       <a href="#" data-q="impermeabile giallo">impermeabile giallo</a> ·
-      <a href="#" data-q="vestito nero e guanti lunghi">vestito nero e guanti lunghi</a>
+      <a href="#" data-q="tutto rosa">tutto rosa</a>
     </p>
+    <button type="button" class="linkbtn" id="caso">Non ho idee: tira a sorte ⟳</button>
     <div id="esito" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- 3. Ispirazione -->
+<!-- 4. Ispirazione -->
 <section class="scene" id="ispirazione" style="background-image:url(img/fart-wars.jpg)">
   <div class="inner">
     <p class="spaced">Ispirazione</p>
-    <h2 class="neon">I miei film preferiti</h2>
+    <h2 class="neon">Alcuni dei miei film preferiti</h2>
     <p style="margin:-8px 0 8px;opacity:.8">Tocca un titolo per vedere i personaggi.</p>
     <div class="films">
       <div class="genre"><h3>Horror</h3><ul class="list">
@@ -199,6 +242,7 @@
         <li><a href="https://www.imdb.com/find/?q=The+Naked+Gun+1988" target="_blank" rel="noopener">Una pallottola spuntata</a></li>
         <li><a href="https://www.imdb.com/find/?q=A+Fish+Called+Wanda" target="_blank" rel="noopener">Un pesce di nome Wanda</a></li>
         <li><a href="https://www.imdb.com/find/?q=Wayne%27s+World+1992" target="_blank" rel="noopener">Wayne's World</a></li>
+        <li><a href="https://www.imdb.com/find/?q=Clue+1985" target="_blank" rel="noopener">Il delitto è servito</a></li>
       </ul></div>
       <div class="genre"><h3>Classici</h3><ul class="list">
         <li><a href="https://www.imdb.com/find/?q=Rear+Window" target="_blank" rel="noopener">La finestra sul cortile</a></li>
@@ -231,8 +275,18 @@
   </div>
 </section>
 
-<!-- 4. Domande -->
-<section class="scene" id="regole" style="background-image:url(img/feline.jpg)">
+<!-- 5. Quiz -->
+<section class="scene" id="quiz" style="background-image:url(img/vibecoder.jpg)">
+  <div class="inner">
+    <p class="spaced">Riscaldamento</p>
+    <h2 class="neon">Trivia</h2>
+    <p style="opacity:.85">Sette domande sui miei film preferiti. Non sono facili.</p>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 6. FAQ -->
+<section class="scene" id="faq" style="background-image:url(img/feline.jpg)">
   <div class="inner">
     <p class="spaced">Domande frequenti</p>
     <h2 class="neon">Chi sei?</h2>
@@ -244,48 +298,104 @@
   </div>
 </section>
 
-<!-- 5. Premio -->
-<section class="scene" id="premio" style="background-image:url(img/premio-costume.jpg)">
-  <div class="inner">
-    <p class="spaced">And the Oscar goes to…</p>
-    <h2 class="neon">Miglior costume</h2>
-    <p>A fine serata premieremo il costume migliore.<br>Con statuetta vera. Più o meno.</p>
-  </div>
+<!-- 7. Premio -->
+<section class="premio" id="premio">
+  <p class="spaced">And the Oscar goes to…</p>
+  <h2 class="neon">Miglior costume</h2>
+  <img src="img/oscar.jpg" alt="Fra con l'Oscar sul red carpet" loading="lazy">
+  <p>A fine serata premieremo il costume migliore.</p>
 </section>
 
-<!-- 6. Chiusura -->
+<!-- 8. Chiusura -->
 <section class="scene" style="background-image:url(img/dr-franca-stein.jpg);min-height:70vh">
   <div class="inner">
-    <h2 class="neon" style="margin:0">Ci vediamo<br>al cinema</h2>
+    <h2 class="neon" style="margin:0">Ci vediamo lì!</h2>
+    <p style="margin-top:14px;font-size:.85rem;opacity:.6">(se sai, SAI)</p>
     <p class="sub" style="margin-top:28px">Ti aspetto travestitə</p>
   </div>
 </section>
 
 <footer>A party by piovesun</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+
 <script src="personaggi.js"></script>
 <script>window.PERSONAGGI = PERSONAGGI;</script>
 <script src="armadio.js"></script>
 <script>
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const mescola=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+  // locandine in ordine sparso a ogni visita
+  const rullo=document.getElementById('rullo');
+  mescola([...rullo.children]).forEach(f=>rullo.appendChild(f));
+
+  // lightbox
+  const lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+  document.querySelectorAll('.rullo img,.premio img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('open')}));
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+
+  // armadio
+  document.getElementById('n-pers').textContent=PERSONAGGI.length;
   const esito=document.getElementById('esito'), q=document.getElementById('q');
-  const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  function mostra(testo){
-    const r=cercaPersonaggio(testo);
-    if(!r.capito){esito.innerHTML='<p class="vuoto">Non ho capito. Prova con capi e colori, tipo «camicia bianca e cravatta nera».</p>';return;}
-    if(!r.risultati.length){esito.innerHTML='<p class="vuoto">Nessun personaggio in archivio. Sei libero di inventare (ma niente Baz Luhrmann).</p>';return;}
-    esito.innerHTML=r.risultati.map((p,i)=>`<div class="match"><p class="spaced" style="margin:0 0 6px">${i?'Oppure':'Potresti essere'}</p>
+  const scheda=(p,tit)=>`<div class="match"><p class="spaced" style="margin:0 0 6px">${tit}</p>
       <p class="nome">${esc(p.n)}</p>
       <p class="film"><a href="https://www.imdb.com/find/?q=${encodeURIComponent(p.f)}" target="_blank" rel="noopener">${esc(p.f)}</a></p>
-      <p class="h">${esc(p.h)}</p></div>`).join('');
+      <p class="h">${esc(p.h)}</p></div>`;
+  function mostra(testo){
+    const r=cercaPersonaggio(testo);
+    if(!r.capito){esito.innerHTML='<p>Non ho capito. Prova con capi e colori, tipo «camicia bianca e cravatta nera».</p>';return;}
+    if(!r.risultati.length){esito.innerHTML='<p>Nessun personaggio in archivio. Sei liberə di inventare (ma niente Baz Luhrmann).</p>';return;}
+    esito.innerHTML=r.risultati.map((p,i)=>scheda(p,i?'Oppure':'Potresti essere')).join('');
   }
   document.getElementById('f-armadio').addEventListener('submit',e=>{e.preventDefault();mostra(q.value)});
   document.querySelectorAll('.esempi a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();q.value=a.dataset.q;mostra(a.dataset.q)}));
-</script>
-<div class="lb" id="lb"><img alt=""></div>
-<script>
-  const lb=document.getElementById('lb'), lbi=lb.querySelector('img');
-  document.querySelectorAll('.rullo img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('open')}));
-  lb.addEventListener('click',()=>lb.classList.remove('open'));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+  document.getElementById('caso').addEventListener('click',()=>{
+    const p=PERSONAGGI[Math.floor(Math.random()*PERSONAGGI.length)];
+    esito.innerHTML=scheda(p,'Il destino dice');
+  });
+
+  // trivia
+  const DOMANDE=[
+    {d:"In <i>Shining</i> di Kubrick, qual è il numero della stanza maledetta?", o:["237","217","1408"]},
+    {d:"Ne <i>Il grande Lebowski</i>, cosa rovinano i due scagnozzi a Drugo all'inizio del film?", o:["Il tappeto","L'accappatoio","La macchina"]},
+    {d:"In <i>A qualcuno piace caldo</i>, come si fanno chiamare i due musicisti travestiti?", o:["Josephine e Daphne","Josephine e Geraldine","Daphne e Sugar"]},
+    {d:"Quale attore è sia il maggiordomo de <i>Il delitto è servito</i> sia Frank-N-Furter nel <i>Rocky Horror</i>?", o:["Tim Curry","Christopher Lloyd","Gene Wilder"]},
+    {d:"In <i>Frankenstein Junior</i>, cosa succede ogni volta che qualcuno pronuncia il nome di Frau Blücher?", o:["Nitriscono i cavalli","Scoppia un tuono","Si spengono le candele"]},
+    {d:"In quale villaggio è ambientato <i>Hot Fuzz</i>?", o:["Sandford","Midsomer","Winchester"]},
+    {d:"Come si chiama l'astronave di <i>Alien</i>?", o:["Nostromo","Sulaco","Prometheus"]}
+  ];
+  const box=document.getElementById('quiz-box');
+  let qi=0, punti=0;
+  function domanda(){
+    if(qi>=DOMANDE.length) return fine();
+    const D=DOMANDE[qi], giusta=D.o[0];
+    box.innerHTML=`<p class="q-num">Domanda ${qi+1} di ${DOMANDE.length}</p><p class="q-testo">${D.d}</p>`+
+      mescola([...D.o]).map(o=>`<button class="opz" data-v="${esc(o)}">${esc(o)}</button>`).join('');
+    box.querySelectorAll('.opz').forEach(b=>b.addEventListener('click',()=>{
+      const ok=b.dataset.v===esc(giusta); if(ok) punti++;
+      box.querySelectorAll('.opz').forEach(x=>{x.disabled=true; if(x.dataset.v===esc(giusta)) x.classList.add('giusta'); else if(x===b) x.classList.add('sbagliata');});
+      setTimeout(()=>{qi++;domanda();},1100);
+    }));
+  }
+  function fine(){
+    if(punti>=6){
+      box.innerHTML=`<div class="festa">
+          <svg class="filante f1" viewBox="0 0 60 160" aria-hidden="true"><path d="M30 2 C 5 20, 55 35, 30 55 S 5 90, 30 108 S 55 140, 30 158" fill="none" stroke="#ff4fd8" stroke-width="6" stroke-linecap="round"/></svg>
+          <img class="fra-pixel" src="img/fra-pixel.png" alt="Fra in pixel art con l'Oscar">
+          <svg class="filante f2" viewBox="0 0 60 160" aria-hidden="true"><path d="M30 2 C 55 20, 5 35, 30 55 S 55 90, 30 108 S 5 140, 30 158" fill="none" stroke="#33e6ff" stroke-width="6" stroke-linecap="round"/></svg>
+          <svg class="filante f3" viewBox="0 0 60 160" aria-hidden="true"><path d="M30 2 C 5 20, 55 35, 30 55 S 5 90, 30 108" fill="none" stroke="#ffd94a" stroke-width="6" stroke-linecap="round"/></svg>
+        </div>
+        <p class="q-testo" style="margin-top:18px">Congratulazioni! Sei prontə per la festa!</p>
+        <p style="opacity:.7;font-size:.9rem">${punti} su ${DOMANDE.length}</p>`;
+    } else {
+      box.innerHTML=`<p class="q-testo">${punti} su ${DOMANDE.length}.</p><p>Quasi. Ripassa i film e riprova.</p>
+        <button class="linkbtn" id="rifai">Riprova ⟳</button>`;
+      document.getElementById('rifai').addEventListener('click',()=>{qi=0;punti=0;domanda();});
+    }
+  }
+  domanda();
 </script>
 </body>
 </html>

@@ -20,7 +20,9 @@
     ["a quadretti","quadri"],["a pois","pois"],["a fiori","fiori"],["parrucca bianca e nera","parrucca_crudelia"],
     ["vestito lungo","vestito_lungo"],["abito lungo","vestito_lungo"],["cappotto lungo","cappotto"],
     ["pantaloni larghi","pantaloni"],["guanti lunghi","guanti_lunghi"],["completo gessato","completo"],
-    ["rosa rossa","fiore_rosso"],["gonna a ruota","gonna"],["tutto nero","nero"],["tutta nera","nero"],["tutto rosa","rosa"]
+    ["rosa rossa","fiore_rosso"],["maschera da hockey","maschera_hockey"],["camicia da notte","camicia_notte"],["costume da bagno","costume_bagno"],
+    ["giacca da cuoco","giacca_cuoco"],["giacca di raso","giacca"],["pantaloni a vita alta","pantaloni"],["divisa scout","divisa_scout"],
+    ["tre chignon","chignon"],["a macchie","mucca"],["gonna scozzese","gonna quadri"],["guanto con le lame","guanto artigli"],["gonna a ruota","gonna"],["tutto nero","nero"],["tutta nera","nero"],["tutto rosa","rosa"]
   ];
   const CAPI = {
     maglietta:"maglietta magliette maglia maglie tshirt t shirt tee",
@@ -29,12 +31,12 @@
     camicia:"camicia camicie camicetta camicette",
     maglione:"maglione maglioni pullover dolcevita",
     cardigan:"cardigan golfino",
-    giacca:"giacca giacche blazer giubbotto giubbino giaccone bomber",
+    giacca:"giacca giacche blazer giubbotto giubbino giaccone bomber piumino",
     cappotto:"cappotto cappotti trench soprabito",
     impermeabile:"impermeabile impermeabili kway",
     pantaloni:"pantaloni pantalone calzoni",
     pantaloncini:"pantaloncini shorts bermuda",
-    gonna:"gonna gonne minigonna",
+    gonna:"gonna gonne minigonna gonnellino",
     vestito:"vestito vestiti abito abiti abitino tubino",
     completo:"completo completi tailleur",
     smoking:"smoking frac",
@@ -145,6 +147,20 @@
     bicicletta:"bicicletta bici triciclo",
     tende:"tende tenda",
     velluto:"velluto",
+    tutu:"tutu",
+    bende:"bende benda bendaggi",
+    uncino:"uncino",
+    bacchetta:"bacchetta",
+    orecchini:"orecchini orecchino",
+    artigli:"artigli lame",
+    croce:"croce crocifisso",
+    racchetta:"racchetta",
+    carota:"carota",
+    palloncini:"palloncini",
+    stuzzicadenti:"stuzzicadenti",
+    diamanti:"diamanti",
+    cuciture:"cuciture",
+    costume:"costume",
     sombrero:"sombrero",
     fascia:"fascia",
     top:"",
@@ -161,11 +177,17 @@
     [/^righe$|^rigat[oaie]$/,"righe"],[/^quadri$|^scozzes[ei]$/,"quadri"],[/^pois$/,"pois"],
     [/^leopardat[oaie]$|^maculat[oaie]$/,"leopardato"],[/^fiori$|^fiorat[oaie]$|^floreal[ei]$/,"fiori"],
     [/^pelle$/,"pelle"],[/^jeans$|^denim$/,"jeans"],[/^bianco$/,"bianco"],[/^biond[oaie]$/,"biondo"],
-    [/^lungh[ie]$|^lung[oa]$/,"lungo"],[/^tond[oaie]$/,"tondo"],[/^colorat[oaie]$/,"colorato"]
+    [/^lungh[ie]$|^lung[oa]$/,"lungo"],[/^patchwork$/,"patchwork"],[/^mucca$/,"mucca"],[/^cotonat[oaie]$/,"cotonato"],[/^raso$|^satin$/,"raso"],[/^tond[oaie]$/,"tondo"],[/^colorat[oaie]$/,"colorato"]
   ];
   const MAPPA = {};
   for (const [k,v] of Object.entries(CAPI)) v.split(" ").filter(Boolean).forEach(w=>MAPPA[w]=k);
-  const SPECIALI = new Set(FRASI.map(f=>f[1]));
+  const ATTR_FRASI = new Set(["righe","quadri","pois","fiori","nero","rosa","mucca"]);
+  const SPECIALI = new Set(FRASI.map(f=>f[1]).filter(x=>!ATTR_FRASI.has(x) && !x.includes(" ")));
+  const PADRE = {occhiali_sole:"occhiali",occhiali_tondi:"occhiali",maschera_hockey:"maschera",cappello_cowboy:"cappello",
+    cappello_paglia:"cappello",cappello_punta:"cappello",cappello_piuma:"cappello",cappello_fiori:"cappello",cappello_cuoco:"cappello",
+    calze_rete:"calze",camicia_hawaiana:"camicia",vestito_lungo:"vestito",guanti_lunghi:"guanti",abito_sposa:"vestito",
+    divisa_cameriera:"divisa",divisa_hostess:"divisa",divisa_scuola:"divisa",divisa_scout:"divisa",tuta_pilota:"tuta",
+    corona_fiori:"corona",spada_laser:"spada",camicia_notte:"pigiama",giacca_cuoco:"giacca",guanti_boxe:"guanti"};
 
   function norm(s){
     return " "+s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
@@ -173,69 +195,81 @@
   }
   function colore(w){ for (const [re,c] of COLORI) if (re.test(w)) return c; return null; }
 
-  // restituisce {capi:[{c, attr:Set}], attr:Set (tutti gli attributi trovati)}
+  // restituisce {capi:[{c, alias:Set, attr:Set}], attr:Set}
   function analizza(testo){
     let s = norm(testo);
     for (const [f,r] of [...FRASI].sort((a,b)=>b[0].length-a[0].length)) s = s.split(" "+f+" ").join(" "+r+" ");
     const toks = s.trim().split(/\s+/);
-    const out=[], tutti=new Set();
+    const out=[], tutti=new Set(), liberi=new Set();
     let ultimo=null;
     for (const w of toks){
       if (SPECIALI.has(w) || MAPPA[w]){
-        let c = SPECIALI.has(w) ? w : MAPPA[w];
-        // jeans come capo = pantaloni blu
-        ultimo = {c, attr:new Set()};
-        if (c==="giacca_pelle"){ ultimo = {c:"giacca", attr:new Set(["pelle"])}; out.push({c:"giacca_pelle",attr:ultimo.attr}); }
-        if (c==="giacca_jeans"){ ultimo = {c:"giacca", attr:new Set(["jeans"])}; }
-        if (c==="occhiali_sole"||c==="occhiali_tondi") out.push({c:"occhiali",attr:new Set()});
+        const c = SPECIALI.has(w) ? w : MAPPA[w];
+        if (c==="giacca_pelle") ultimo={c:"giacca", alias:new Set(["giacca","giacca_pelle"]), attr:new Set(["pelle"])};
+        else if (c==="giacca_jeans") ultimo={c:"giacca", alias:new Set(["giacca"]), attr:new Set(["jeans"])};
+        else ultimo={c, alias:new Set([c].concat(PADRE[c]?[PADRE[c]]:[])), attr:new Set()};
         out.push(ultimo);
         continue;
       }
       const col = colore(w);
       if (col){
-        if (col==="jeans" && (!ultimo || ultimo.attr.size)) { ultimo={c:"pantaloni",attr:new Set(["blu","jeans"])}; out.push(ultimo); tutti.add("blu"); continue; }
+        if (col==="jeans" && (!ultimo || ultimo.attr.size)) { ultimo={c:"pantaloni",alias:new Set(["pantaloni"]),attr:new Set(["blu","jeans"])}; out.push(ultimo); tutti.add("blu"); continue; }
         tutti.add(col);
-        if (ultimo) ultimo.attr.add(col);
-        continue;
+        if (ultimo) ultimo.attr.add(col); else liberi.add(col);
       }
     }
-    return {capi:out, attr:tutti};
+    return {capi:out, attr:tutti, liberi};
   }
 
-  // ogni indizio del personaggio diventa un requisito
-  const DB = (window.PERSONAGGI||[]).map(p=>({...p, req:p.t.map(t=>{
-    const a = analizza(t);
-    if (a.capi.length) return {c:a.capi[a.capi.length-1].c, extra:a.capi.slice(0,-1).map(x=>x.c), attr:[...a.capi[a.capi.length-1].attr]};
-    return {c:null, attr:[...a.attr]};
-  }).filter(r=>r.c||r.attr.length)}));
+  // ogni capo citato negli indizi diventa un requisito
+  const DB = (window.PERSONAGGI||[]).map(p=>{
+    const req=[], visti=new Set(), attrSolo=new Set();
+    for (const t of p.t){
+      const a=analizza(t);
+      if (!a.capi.length){ a.attr.forEach(x=>attrSolo.add(x)); continue; }
+      for (const x of a.capi){
+        const k=x.c+"|"+[...x.attr].sort().join(",");
+        if (visti.has(k)) continue; visti.add(k);
+        req.push({c:x.c, alias:x.alias, attr:[...x.attr]});
+      }
+    }
+    return {...p, req, attrSolo:[...attrSolo]};
+  });
+
+  function voto(r, x){
+    const ok = x.alias.has(r.c) || r.alias.has(x.c);
+    if (!ok) return 0;
+    const esatto = (x.c===r.c) ? 0.5 : 0;
+    if (!r.attr.length) return 2+esatto;
+    if (r.attr.every(a=>x.attr.has(a))) return 3+esatto;
+    if (!x.attr.size) return 1.2;
+    if (r.attr.some(a=>x.attr.has(a))) return 1.6;
+    return 0.2;
+  }
 
   function punteggio(p, u){
-    let tot=0, presi=0;
-    for (const r of p.req){
-      let best=0;
-      if (r.c){
-        for (const x of u.capi){
-          if (x.c!==r.c && !(r.extra||[]).includes(x.c)) continue;
-          if (!r.attr.length) best=Math.max(best,2);
-          else if (r.attr.every(a=>x.attr.has(a))) best=Math.max(best,3);
-          else if (!x.attr.size) best=Math.max(best,1.2);
-          else if (r.attr.some(a=>x.attr.has(a))) best=Math.max(best,1.5);
-          else best=Math.max(best,0.2);
-        }
-      } else if (r.attr.some(a=>u.attr.has(a))) best=1;
-      if (best>=1) presi++;
-      tot+=best;
+    // abbinamento goloso: ogni capo dell'utente vale per un solo requisito
+    const coppie=[];
+    p.req.forEach((r,i)=>u.capi.forEach((x,j)=>{const v=voto(r,x); if(v>0) coppie.push([v,i,j]);}));
+    coppie.sort((a,b)=>b[0]-a[0]);
+    const ri=new Set(), uj=new Set(); let tot=0, presi=0;
+    for (const [v,i,j] of coppie){ if(ri.has(i)||uj.has(j)) continue; ri.add(i); uj.add(j); tot+=v; if(v>=1) presi++; }
+    const attrOk = p.attrSolo.filter(a=>u.attr.has(a)).length;
+    tot += Math.min(attrOk,2);
+    if (attrOk) presi++;
+    // colori scritti da soli ("tutto rosa"): valgono sui capi di quel colore
+    if (u.liberi && u.liberi.size){
+      let k=0; p.req.forEach((r,i)=>{ if(!ri.has(i) && r.attr.some(a=>u.liberi.has(a))) k++; });
+      if (k){ tot+=Math.min(k,2)*0.9; presi++; }
     }
-    // penalità leggera per i capi dell'utente che il personaggio non usa
-    const usati = new Set(p.req.flatMap(r=>[r.c,...(r.extra||[])]));
-    const extra = u.capi.filter(x=>!usati.has(x.c)).length;
-    return tot - 0.3*extra + (presi>=2?0.5:0);
+    const avanzi = u.capi.length - uj.size;
+    return tot - 0.4*avanzi + (presi>=2?0.5:0);
   }
 
   window.cercaPersonaggio = function(testo){
     const u = analizza(testo);
     if (!u.capi.length && !u.attr.size) return {capito:false, risultati:[]};
-    const r = DB.map(p=>({p, s:punteggio(p,u)})).filter(x=>x.s>=2).sort((a,b)=>b.s-a.s).slice(0,3);
+    const r = DB.map(p=>({p, s:punteggio(p,u)})).filter(x=>x.s>=1.8).sort((a,b)=>b.s-a.s).slice(0,3);
     return {capito:true, risultati:r.map(x=>x.p)};
   };
   window._armadio = {analizza, DB};
