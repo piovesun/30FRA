@@ -168,7 +168,6 @@
 <!-- 3. Armadio -->
 <section class="scene" id="armadio" style="background-image:url(img/indie-movie.jpg)">
   <div class="inner">
-    <p class="spaced">Il gioco</p>
     <h2 class="neon">Cosa hai nell'armadio?</h2>
     <p>Scrivi cosa hai già (capi, colori, oggetti) e ti dico chi potresti essere.<br>
       <span style="opacity:.75">In archivio ci sono <b id="n-pers">250</b> personaggi.</span></p>
@@ -191,7 +190,7 @@
 <!-- 4. Ispirazione -->
 <section class="scene" id="ispirazione" style="background-image:url(img/fart-wars.jpg)">
   <div class="inner">
-    <p class="spaced">Ispirazione</p>
+    <p class="spaced">Per ispirazione</p>
     <h2 class="neon">Alcuni dei miei film preferiti</h2>
     <p style="margin:-8px 0 8px;opacity:.8">Tocca un titolo per vedere i personaggi.</p>
     <div class="films">
@@ -280,7 +279,7 @@
   <div class="inner">
     <p class="spaced">Riscaldamento</p>
     <h2 class="neon">Trivia</h2>
-    <p style="opacity:.85">Sette domande sui miei film preferiti. Non sono facili.</p>
+    <p style="opacity:.85">Sette domande sui miei film preferiti.</p>
     <div id="quiz-box"></div>
   </div>
 </section>
@@ -288,8 +287,7 @@
 <!-- 6. FAQ -->
 <section class="scene" id="faq" style="background-image:url(img/feline.jpg)">
   <div class="inner">
-    <p class="spaced">Domande frequenti</p>
-    <h2 class="neon">Chi sei?</h2>
+    <h2 class="neon">Domande frequenti</h2>
     <div class="qa"><p class="d">Devo travestirmi per forza?</p><p class="r">Nessuno deve fare nulla per forza, ma è divertente, no? Con una felpa puoi fare Eminem in <i>8 Mile</i>.</p></div>
     <div class="qa"><p class="d">Quanto sforzo ci devo mettere?</p><p class="r">Proporzionale a quanto mi vuoi bene :)</p></div>
     <div class="qa"><p class="d">C'è un premio per il miglior costume?</p><p class="r">OVVIO, non mi conosci ancora?</p></div>
@@ -310,7 +308,6 @@
 <section class="scene" style="background-image:url(img/dr-franca-stein.jpg);min-height:70vh">
   <div class="inner">
     <h2 class="neon" style="margin:0">Ci vediamo lì!</h2>
-    <p style="margin-top:14px;font-size:.85rem;opacity:.6">(se sai, SAI)</p>
     <p class="sub" style="margin-top:28px">Ti aspetto travestitə</p>
   </div>
 </section>
@@ -357,17 +354,50 @@
   });
 
   // trivia
-  const DOMANDE=[
+  // pool di domande: a ogni partita ne escono 7 a caso (la prima risposta è quella giusta)
+  const POOL=[
     {d:"In <i>Shining</i> di Kubrick, qual è il numero della stanza maledetta?", o:["237","217","1408"]},
+    {d:"Nella versione italiana di <i>Shining</i>, cosa scrive Jack a macchina per centinaia di pagine?", o:["Il mattino ha l'oro in bocca","Chi dorme non piglia pesci","Il lavoro nobilita l'uomo"]},
     {d:"Ne <i>Il grande Lebowski</i>, cosa rovinano i due scagnozzi a Drugo all'inizio del film?", o:["Il tappeto","L'accappatoio","La macchina"]},
+    {d:"Qual è il cocktail di Drugo ne <i>Il grande Lebowski</i>?", o:["White Russian","Martini","Negroni"]},
     {d:"In <i>A qualcuno piace caldo</i>, come si fanno chiamare i due musicisti travestiti?", o:["Josephine e Daphne","Josephine e Geraldine","Daphne e Sugar"]},
+    {d:"Che strumento suona Sugar in <i>A qualcuno piace caldo</i>?", o:["Ukulele","Sassofono","Contrabbasso"]},
     {d:"Quale attore è sia il maggiordomo de <i>Il delitto è servito</i> sia Frank-N-Furter nel <i>Rocky Horror</i>?", o:["Tim Curry","Christopher Lloyd","Gene Wilder"]},
+    {d:"Cosa aveva di speciale <i>Il delitto è servito</i> quando uscì al cinema?", o:["Tre finali diversi, a seconda della sala","Era girato in un'unica inquadratura","Non c'erano dialoghi"]},
     {d:"In <i>Frankenstein Junior</i>, cosa succede ogni volta che qualcuno pronuncia il nome di Frau Blücher?", o:["Nitriscono i cavalli","Scoppia un tuono","Si spengono le candele"]},
+    {d:"In <i>Frankenstein Junior</i>, come risponde Igor a «Lupo ululà»?", o:["«Castello ululì»","«Luna piena»","«Si può fare!»"]},
     {d:"In quale villaggio è ambientato <i>Hot Fuzz</i>?", o:["Sandford","Midsomer","Winchester"]},
-    {d:"Come si chiama l'astronave di <i>Alien</i>?", o:["Nostromo","Sulaco","Prometheus"]}
+    {d:"In quale pub si rifugiano in <i>Shaun of the Dead</i>?", o:["The Winchester","The Red Lion","The Slaughtered Lamb"]},
+    {d:"Come si chiama l'astronave di <i>Alien</i>?", o:["Nostromo","Sulaco","Prometheus"]},
+    {d:"Come si chiama il gatto di <i>Alien</i>?", o:["Jones","Mocha","Nostromo"]},
+    {d:"Di che colore è il maglione di Andy nel monologo de <i>Il diavolo veste Prada</i>?", o:["Ceruleo","Turchese","Blu lapislazzuli"]},
+    {d:"In <i>Monty Python e il Sacro Graal</i>, con cosa simulano il rumore degli zoccoli?", o:["Noci di cocco","Gusci di tartaruga","Bicchieri capovolti"]},
+    {d:"In <i>Midsommar</i>, ogni quanti anni si tiene la festa di Hårga?", o:["90","50","100"]},
+    {d:"In <i>Mad Max: Fury Road</i>, come si chiama il chitarrista con la chitarra lanciafiamme?", o:["Coma-Doof Warrior","Rictus Erectus","Nux"]},
+    {d:"In <i>Taxi Driver</i>, Travis è un veterano di quale guerra?", o:["Vietnam","Corea","Seconda guerra mondiale"]},
+    {d:"In che anno è ambientato il primo <i>Blade Runner</i>?", o:["2019","2049","2001"]},
+    {d:"In <i>Ricomincio da capo</i>, in quale cittadina resta intrappolato Phil?", o:["Punxsutawney","Twin Peaks","Fargo"]},
+    {d:"Come si chiama il personaggio di Woody Allen in <i>Io e Annie</i>?", o:["Alvy Singer","Isaac Davis","Mickey Sachs"]},
+    {d:"Che lavoro fa Jeff in <i>La finestra sul cortile</i>?", o:["Fotografo","Giornalista","Detective"]},
+    {d:"In <i>Bastardi senza gloria</i>, come si chiama il cinema di Shosanna?", o:["Le Gamaar","Le Grand Rex","Le Champo"]},
+    {d:"Qual è la parola d'ordine della festa in <i>Eyes Wide Shut</i>?", o:["Fidelio","Rosebud","Tosca"]},
+    {d:"In <i>Chinatown</i>, che ferita ha Jake per buona parte del film?", o:["Un taglio al naso","Un occhio nero","Un braccio rotto"]},
+    {d:"In <i>Fargo</i>, dove finisce il corpo nella scena più famosa?", o:["In una cippatrice","In un lago ghiacciato","In un forno"]},
+    {d:"Quale canzone cantano in macchina in <i>Wayne's World</i>?", o:["Bohemian Rhapsody","We Will Rock You","Stairway to Heaven"]},
+    {d:"Come si chiama il caprone di <i>The Witch</i>?", o:["Black Phillip","Old Nick","Black Peter"]},
+    {d:"Quale animale tormenta il guardiano in <i>The Lighthouse</i>?", o:["Un gabbiano","Un granchio","Un corvo"]},
+    {d:"Come si chiamano le due bande di <i>West Side Story</i>?", o:["Jets e Sharks","Jets e Eagles","Sharks e Tigers"]},
+    {d:"Come si chiama il locale di <i>Cabaret</i>?", o:["Kit Kat Klub","Moulin Rouge","Blue Angel"]},
+    {d:"Che auto guida Bruno nel <i>Sorpasso</i>?", o:["Lancia Aurelia","Alfa Romeo Giulietta","Fiat 500"]},
+    {d:"Che giorno è la «giornata particolare» del film di Scola?", o:["La visita di Hitler a Roma","La liberazione di Roma","Il giorno del referendum"]},
+    {d:"Qual è il nome di battesimo di Mr Darcy in <i>Orgoglio e pregiudizio</i>?", o:["Fitzwilliam","Charles","Edward"]},
+    {d:"Come si chiama il regno dei genitori di Fiona in <i>Shrek 2</i>?", o:["Molto Molto Lontano","Duloc","Oltremare"]},
+    {d:"Quanti figli ha il capitano von Trapp in <i>Tutti insieme appassionatamente</i>?", o:["7","5","9"]}
   ];
+  let DOMANDE=[];
   const box=document.getElementById('quiz-box');
   let qi=0, punti=0;
+  function nuovaPartita(){ DOMANDE=mescola([...POOL]).slice(0,7); qi=0; punti=0; domanda(); }
   function domanda(){
     if(qi>=DOMANDE.length) return fine();
     const D=DOMANDE[qi], giusta=D.o[0];
@@ -392,10 +422,10 @@
     } else {
       box.innerHTML=`<p class="q-testo">${punti} su ${DOMANDE.length}.</p><p>Quasi. Ripassa i film e riprova.</p>
         <button class="linkbtn" id="rifai">Riprova ⟳</button>`;
-      document.getElementById('rifai').addEventListener('click',()=>{qi=0;punti=0;domanda();});
+      document.getElementById('rifai').addEventListener('click',nuovaPartita);
     }
   }
-  domanda();
+  nuovaPartita();
 </script>
 </body>
 </html>
